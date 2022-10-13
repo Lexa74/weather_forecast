@@ -17,6 +17,9 @@ function App() {
       <div>
         <Routes>
           <Route path="/" element={<Main />} />
+          <Route path="/in/Minsk" element={<Main />} />
+          <Route path="/in/Moscow" element={<Main />} />
+          <Route path="/in/Bratislava" element={<Main />} />
           <Route path="/other" element={<Other />} />
         </Routes>
         {/* <Svg name="svg-one" className={[{fill: '#000000'}, {stroke: ''}, {width: '200px'}]}></Svg> */}
