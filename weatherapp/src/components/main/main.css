@@ -1,0 +1,33 @@
+.weather-main {
+    padding: 15px;
+}
+
+.change-city {
+    margin-bottom: 15px;
+}
+
+.change-city button {
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.weatherCity {
+    font-weight: bold;
+}
+
+.weater-days {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.weater-days div {
+    border: 2px solid #1d1dbb;
+    padding: 10px;
+}
+
+.weater-days span {
+    font-size: 30px;
+    display: block;
+    text-align: center;
+}

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useWeather } from "../../weatherService";
+import { getWeather, useWeather } from "../../weatherService";
 import './main.css'
 
 
@@ -19,7 +19,7 @@ export const Main = () => {
     //         }, () => {
     //             setWeatherByCity('Minsk')
     //         })
-            
+
     //     } else {
     //         setWeatherByCity(cityByUrl)
     //     }
@@ -81,19 +81,43 @@ export const Main = () => {
     //     })
 
     //}
+    // const setInsideCity = 'Minsk'
 
+    // useEffect(() => {
+    //     const setInsideCity = () => {
+    //         const getCity = document.querySelectorAll('.getCity')
+    //         getCity.forEach((city) => {
+    //             city.addEventListener('click', () => {
+    //                 return city.value
+    //             })
+    //         })
+    //     }
+    // }, [setInsideCity()])
 
+    let urlInside = ''
+    if(window.location.pathname === '/') {
+        urlInside  = '/Minsk'
+    } else {
+        urlInside = window.location.pathname
+    }
 
     return (
-        <div>
-            <Link to='/other'>Внутренняя страница</Link>
-            <div className="changeCity">
-                <Link to='/in/Minsk'><button className="getCity" value='Minsk'>Minsk</button></Link>
-                <Link to='/in/Moscow'><button className="getCity" value='Moscow'>Moscow</button></Link>
-                <Link to='/in/Bratislava'><button className="getCity" value='Bratislava'>Bratislava</button></Link>
+        <div className="weather-main">
+            <Link to={'/in' + urlInside}>Внутренняя страница</Link>
+            <div className="change-city">
+                <p>Выбирете город:</p>
+                <Link to='/Minsk'><button className="getCity" value='Minsk'>Minsk</button></Link>
+                <Link to='/Moscow'><button className="getCity" value='Moscow'>Moscow</button></Link>
+                <Link to='/Bratislava'><button className="getCity" value='Bratislava'>Bratislava</button></Link>
             </div>
             <div className="data-weather">
-
+                <div>Город: <span className="weatherCity"></span></div>
+                <div className="weater-days">
+                    <div>Температура сейчас: <span className="weatherNow"></span></div>
+                    <div>Температура завтра: <span className="weatherTomorrow"></span></div>
+                    <div>Температура послезавтра: <span className="weatherAfterTomorrow"></span></div>
+                    <div>Температура через 2 дня: <span className="weatherAfter2Day"></span></div>
+                </div>
             </div>
         </div>
     )
