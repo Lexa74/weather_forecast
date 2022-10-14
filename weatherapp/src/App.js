@@ -17,15 +17,12 @@ function App() {
       <div>
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/in/Minsk" element={<Other />} />
-          <Route path="/in/Moscow" element={<Other />} />
-          <Route path="/in/Bratislava" element={<Other />} />
+          <Route path="/in/*" element={<Other />} />
           <Route path="/Minsk" element={<Main />} />
           <Route path="/Moscow" element={<Main />} />
           <Route path="/Bratislava" element={<Main />} />
           <Route path="/other" element={<Other />} />
         </Routes>
-        {/* <Svg name="svg-one" className={[{fill: '#000000'}, {stroke: ''}, {width: '200px'}]}></Svg> */}
         <Svg name="svg-one" className='svg-one w200 h200 fill#000000 stroke#000000'></Svg>
         <Svg name="svg-one" className='svg-two w100 h100 fill#ffffff stroke#000000'></Svg>
       </div>

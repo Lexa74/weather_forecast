@@ -1,0 +1,38 @@
+.weather-in-city {
+    margin: 10px;
+}
+
+.hourly-weather {
+    text-align: center;
+}
+
+.container-hourly-weather {
+    display: flex;
+    justify-content: space-around;
+}
+
+.container-hourly-weather div {
+    border-right: 1px solid #1d1dbb;
+    padding: 10px;
+    text-align: center;
+}
+
+.weather-day-content {
+    display: flex;
+    justify-content: start;
+    gap: 10px;
+}
+
+.weather-day-content div {
+    border: 2px solid #1d1dbb;
+    padding: 10px;
+    text-align: center;
+}
+
+.name-city-weather {
+    text-transform: capitalize;
+}
+
+.city-val {
+    margin-right: 5px;
+}

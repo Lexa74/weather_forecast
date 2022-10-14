@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { getWeather, getCoordsByCity } from "../../weatherService";
 import './main.css'
 
@@ -8,6 +8,8 @@ const enumAllowedCityes = ['Minsk', 'Moscow', 'Bratislava']
 export const Main = () => {
 
     const [thisCityWeather, setThisCityWeather] = useState([])
+    const [urlInside, setUrlInside] = useState('/Minsk')
+    const location = useLocation();
 
     useEffect(() => {
 
@@ -30,12 +32,12 @@ export const Main = () => {
         }
     }, [])
 
-    let urlInside = ''
-    if (window.location.pathname === '/') {
-        urlInside = '/Minsk'
-    } else {
-        urlInside = window.location.pathname
-    }
+    
+    useEffect(() => {
+        setUrlInside(location.pathname === '/' ? '/Minsk' : location.pathname )
+    }, [location])
+
+
 
     const clickCityButton = async (city) => {
         setThisCityWeather(await getWeather(await getCoordsByCity(city)))
@@ -46,9 +48,9 @@ export const Main = () => {
             <Link to={'/in' + urlInside}>Внутренняя страница</Link>
             <div className="change-city">
                 <p>Выбирете город:</p>
-                <Link to='/Minsk'><button onClick={() => {clickCityButton('Minsk')}} className="getCity">Minsk</button></Link>
-                <Link to='/Moscow'><button onClick={() => {clickCityButton('Moscow')}} className="getCity">Moscow</button></Link>
-                <Link to='/Bratislava'><button onClick={() => {clickCityButton('Bratislava')}} className="getCity">Bratislava</button></Link>
+                <Link to='/Minsk'><button onClick={() => { clickCityButton('Minsk') }} className="getCity">Minsk</button></Link>
+                <Link to='/Moscow'><button onClick={() => { clickCityButton('Moscow') }} className="getCity">Moscow</button></Link>
+                <Link to='/Bratislava'><button onClick={() => { clickCityButton('Bratislava') }} className="getCity">Bratislava</button></Link>
             </div>
             {thisCityWeather.length > 0 ?
                 (
